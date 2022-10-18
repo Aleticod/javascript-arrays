@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <div id="task"></div>
+    <script>
+        const data = [
+            { name: 'John', age: 20 },
+            { name: 'Jane', age: 24 },
+            { name: 'Jack', age: 30 },
+        ];
+        const app = document.querySelector('#app');
+        data.forEach((item) => {
+            const div = document.createElement('div');
+            div.innerHTML = `${item.name} is ${item.age} years old`;
+            app.appendChild(div);
+        });
+
+        const task = document.querySelector('#task');
+
+        const tasks = [
+            { title: 'Task 1', completed: true },
+            { title: 'Task 2', completed: false },
+            { title: 'Task 3', completed: true },
+        ]
+
+        const nodes = [];
+
+        tasks.forEach(({title, completed}) => {
+            const element = `
+                <li>
+                    <input type="checkbox" id="${title}" name="${title}" ${completed && 'checked'}/>
+                    <label for="${title}">${title}</label>
+                </li>
+            `;
+            task.insertAdjacentHTML('beforeend', element);
+        });
+
+    </script>
+</body>
+</html>
